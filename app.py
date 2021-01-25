@@ -19,7 +19,7 @@ def get_bot_response():
     userText = remove_stopwords_question(userText)
     userText = stemming_query(userText)
     print(userText)
-    return str(chatbot.get_response(userText))
+    return str(chatbot.get_response(userText.lower()))
 
 
 if __name__ == "__main__":

@@ -85,14 +85,14 @@ chatbot = ChatBot(
     'INFOCOVID CHATBOT',
     storage_adapter='chatterbot.storage.SQLStorageAdapter',
     logic_adapters=[
-        'chatterbot.logic.MathematicalEvaluation',  # math function
+        # 'chatterbot.logic.MathematicalEvaluation',  # math function
         # 'chatterbot.logic.TimeLogicAdapter', #time function
-        'chatterbot.logic.BestMatch',
         {
             'import_path': 'chatterbot.logic.BestMatch',
             'default_response': 'Saya minta maaf, tetapi saya tidak faham apa yang anda tulis. saya masih belajar.',
             'maximum_similarity_threshold': 0.90
-        }
+        },
+        # 'chatterbot.logic.BestMatch',
     ],
     database_uri='sqlite:///database.sqlite3',
     preprocessors=[
@@ -101,6 +101,7 @@ chatbot = ChatBot(
 )
 
 # Training with Personal Ques & Ans
+
 
 # preprocessing the training file
 remove_stopwords_corpus("training_data/covid3.txt")  # output: filteredtext
@@ -111,6 +112,7 @@ training_data_greeting = open(
 training_data_covid = open(
     'training_data/stemmedtext.txt').read().splitlines()
 training_data_kesbaru = open('kesbaru.txt').read().splitlines()
+# it to update to new date
 
 training_data = training_data_greeting + \
     training_data_covid + training_data_kesbaru
